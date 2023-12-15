@@ -8,3 +8,7 @@ variable "cloudflare_account_id" {
   description = "The Cloudflare account ID to use."
 }
 
+variable "forwarding_email_address" {
+  type        = string
+  description = "The address to forward standard email aliases to."
+}
