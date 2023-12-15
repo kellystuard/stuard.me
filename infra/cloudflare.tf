@@ -6,6 +6,20 @@ resource "cloudflare_zone" "stuard_me" {
   plan       = "free"
 }
 
+// Fighting Bots
+
+resource "cloudflare_bot_management" "example" {
+  zone_id = cloudflare_zone.stuard_me.id
+
+  auto_update_model               = true
+  enable_js                       = true
+  sbfm_definitely_automated       = "block"
+  sbfm_likely_automated           = "managed_challenge"
+  sbfm_verified_bots              = "allow"
+  sbfm_static_resource_protection = false
+  optimize_wordpress              = false
+}
+
 // Email Setup
 
 resource "cloudflare_email_routing_settings" "stuard_me" {
