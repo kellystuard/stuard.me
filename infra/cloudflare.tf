@@ -6,7 +6,15 @@ resource "cloudflare_zone" "stuard_me" {
   plan       = "free"
 }
 
-// Fighting Bots
+// Rules / Settings
+
+resource "cloudflare_url_normalization_settings" "example" {
+  zone_id = "0da42c8d2132a9ddaf714f9e7c920711"
+  type    = "cloudflare"
+  scope   = "incoming"
+}
+
+// Security / Bots
 
 resource "cloudflare_bot_management" "example" {
   zone_id = cloudflare_zone.stuard_me.id
@@ -14,14 +22,10 @@ resource "cloudflare_bot_management" "example" {
   auto_update_model               = true
   enable_js                       = true
   fight_mode                      = true
-  # sbfm_definitely_automated       = "block"
-  # sbfm_likely_automated           = "managed_challenge"
-  # sbfm_verified_bots              = "allow"
-  # sbfm_static_resource_protection = false
   optimize_wordpress              = false
 }
 
-// Email Setup
+// Email / Email Routing
 
 resource "cloudflare_email_routing_settings" "stuard_me" {
   zone_id = cloudflare_zone.stuard_me.id
