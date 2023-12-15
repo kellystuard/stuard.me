@@ -13,6 +13,7 @@ resource "cloudflare_bot_management" "example" {
 
   auto_update_model               = true
   enable_js                       = true
+  fight_mode                      = true
   # sbfm_definitely_automated       = "block"
   # sbfm_likely_automated           = "managed_challenge"
   # sbfm_verified_bots              = "allow"
