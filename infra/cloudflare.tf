@@ -11,9 +11,11 @@ resource "cloudflare_zone" "stuard_me" {
 resource "cloudflare_email_routing_settings" "stuard_me" {
   zone_id = cloudflare_zone.stuard_me.id
   enabled = true
+
+  skip_wizard = true
 }
 
-resource "cloudflare_email_routing_rule" "main" {
+resource "cloudflare_email_routing_rule" "stuard_me" {
   for_each = toset([
     "webmaster", "abuse", "postmaster", "hostmaster"
   ])
