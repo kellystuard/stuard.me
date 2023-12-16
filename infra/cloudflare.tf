@@ -9,7 +9,7 @@ resource "cloudflare_zone" "stuard_me" {
 // DNS / Records
 
 resource "cloudflare_record" "cname_root" {
-  zone_id = var.cloudflare_zone_id
+  zone_id = cloudflare_zone.stuard_me.id
   name    = "home"
   value   = "z1755512.eero.online"
   type    = "CNAME"
@@ -17,7 +17,7 @@ resource "cloudflare_record" "cname_root" {
 }
 
 resource "cloudflare_record" "cname_minecraft" {
-  zone_id = var.cloudflare_zone_id
+  zone_id = cloudflare_zone.stuard_me.id
   name    = "minecraft"
   value   = "z1755512.eero.online"
   type    = "CNAME"
