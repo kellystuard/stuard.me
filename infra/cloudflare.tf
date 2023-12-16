@@ -10,6 +10,22 @@ resource "cloudflare_zone" "stuard_me" {
 
 resource "cloudflare_record" "cname_root" {
   zone_id = cloudflare_zone.stuard_me.id
+  name    = "@"
+  value   = "z1755512.eero.online"
+  type    = "CNAME"
+  proxied = true
+}
+
+resource "cloudflare_record" "cname_www" {
+  zone_id = cloudflare_zone.stuard_me.id
+  name    = "www"
+  value   = "z1755512.eero.online"
+  type    = "CNAME"
+  proxied = true
+}
+
+resource "cloudflare_record" "cname_home" {
+  zone_id = cloudflare_zone.stuard_me.id
   name    = "home"
   value   = "z1755512.eero.online"
   type    = "CNAME"
