@@ -8,7 +8,7 @@ resource "cloudflare_zone" "stuard_me" {
 
 // Rules / Settings
 
-resource "cloudflare_url_normalization_settings" "example" {
+resource "cloudflare_url_normalization_settings" "stuard_me" {
   zone_id = cloudflare_zone.stuard_me.id
   type    = "cloudflare"
   scope   = "incoming"
@@ -16,7 +16,7 @@ resource "cloudflare_url_normalization_settings" "example" {
 
 // Security / Bots
 
-resource "cloudflare_bot_management" "example" {
+resource "cloudflare_bot_management" "stuard_me" {
   zone_id = cloudflare_zone.stuard_me.id
 
   auto_update_model  = true
