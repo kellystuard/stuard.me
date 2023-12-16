@@ -6,6 +6,24 @@ resource "cloudflare_zone" "stuard_me" {
   plan       = "free"
 }
 
+// DNS / Records
+
+resource "cloudflare_record" "cname_root" {
+  zone_id = var.cloudflare_zone_id
+  name    = "home"
+  value   = "z1755512.eero.online"
+  type    = "CNAME"
+  proxied = true
+}
+
+resource "cloudflare_record" "cname_minecraft" {
+  zone_id = var.cloudflare_zone_id
+  name    = "minecraft"
+  value   = "z1755512.eero.online"
+  type    = "CNAME"
+  proxied = false
+}
+
 // Rules / Settings
 
 resource "cloudflare_url_normalization_settings" "stuard_me" {
