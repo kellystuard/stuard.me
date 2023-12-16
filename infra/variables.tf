@@ -1,6 +1,6 @@
-variable "cloudflare_api_token" {
+variable "cloudflare_api_key" {
   type        = string
-  description = "The Cloudflare API Token for operations."
+  description = "The Cloudflare API Key for operations."
 }
 
 variable "cloudflare_account_id" {

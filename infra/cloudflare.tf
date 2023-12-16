@@ -19,10 +19,10 @@ resource "cloudflare_url_normalization_settings" "example" {
 resource "cloudflare_bot_management" "example" {
   zone_id = cloudflare_zone.stuard_me.id
 
-  auto_update_model               = true
-  enable_js                       = true
-  fight_mode                      = true
-  optimize_wordpress              = false
+  auto_update_model  = true
+  enable_js          = true
+  fight_mode         = true
+  optimize_wordpress = false
 }
 
 // Email / Email Routing
