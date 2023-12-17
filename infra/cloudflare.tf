@@ -6,12 +6,14 @@ resource "cloudflare_zone" "stuard_me" {
   plan       = "free"
 }
 
+
+
 // DNS / Records
 
 resource "cloudflare_record" "cname_root" {
   zone_id = cloudflare_zone.stuard_me.id
   name    = "@"
-  value   = "z1755512.eero.online"
+  value   = azurerm_static_site.root.default_host_name
   type    = "CNAME"
   proxied = true
 }
@@ -19,7 +21,7 @@ resource "cloudflare_record" "cname_root" {
 resource "cloudflare_record" "cname_www" {
   zone_id = cloudflare_zone.stuard_me.id
   name    = "www"
-  value   = "z1755512.eero.online"
+  value   = azurerm_static_site.root.default_host_name
   type    = "CNAME"
   proxied = true
 }
