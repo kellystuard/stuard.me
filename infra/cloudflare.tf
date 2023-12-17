@@ -18,6 +18,13 @@ resource "cloudflare_record" "cname_root" {
   proxied = true
 }
 
+resource "cloudflare_record" "txt_azure" {
+  zone_id = cloudflare_zone.stuard_me.id
+  name    = "@"
+  value   = azurerm_static_site_custom_domain.root.validation_token
+  type    = "TXT"
+}
+
 resource "cloudflare_record" "cname_www" {
   zone_id = cloudflare_zone.stuard_me.id
   name    = "www"
@@ -40,13 +47,6 @@ resource "cloudflare_record" "cname_minecraft" {
   value   = "z1755512.eero.online"
   type    = "CNAME"
   proxied = false
-}
-
-resource "cloudflare_record" "txt_azure" {
-  zone_id = cloudflare_zone.stuard_me.id
-  name    = "_dnsauth"
-  value   = azurerm_static_site_custom_domain.root.validation_token
-  type    = "TXT"
 }
 
 // Rules / Settings
