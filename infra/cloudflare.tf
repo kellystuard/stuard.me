@@ -54,7 +54,29 @@ resource "cloudflare_record" "cname_minecraft" {
 resource "cloudflare_url_normalization_settings" "stuard_me" {
   zone_id = cloudflare_zone.stuard_me.id
   type    = "cloudflare"
-  scope   = "incoming"
+  scope   = "both"
+}
+
+// SSL/TLS / Overview
+
+resource "cloudflare_zone_settings_override" "test" {
+  zone_id = cloudflare_zone.stuard_me.id
+
+  settings {
+    min_tls_version = "1.3"
+    ssl             = "full"
+
+    minify {
+      css  = "on"
+      js   = "on"
+      html = "on"
+    }
+
+    security_header {
+      enabled = true
+    }
+
+  }
 }
 
 // Security / Bots
