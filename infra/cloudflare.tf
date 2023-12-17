@@ -42,6 +42,13 @@ resource "cloudflare_record" "cname_minecraft" {
   proxied = false
 }
 
+resource "cloudflare_record" "txt_azure" {
+  zone_id = cloudflare_zone.stuard_me.id
+  name    = "_dnsauth"
+  value   = azurerm_static_site_custom_domain.stuard_me.validation_token
+  type    = "TXT"
+}
+
 // Rules / Settings
 
 resource "cloudflare_url_normalization_settings" "stuard_me" {
