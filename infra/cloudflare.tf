@@ -25,13 +25,6 @@ resource "cloudflare_record" "txt_azure" {
   type    = "TXT"
 }
 
-resource "cloudflare_record" "alias_azure" {
-  zone_id = cloudflare_zone.stuard_me.id
-  name    = "@"
-  value   = azurerm_static_site.root.default_host_name
-  type    = "ALIAS"
-}
-
 resource "cloudflare_record" "cname_www" {
   zone_id = cloudflare_zone.stuard_me.id
   name    = "www"
