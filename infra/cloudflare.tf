@@ -45,7 +45,7 @@ resource "cloudflare_record" "cname_minecraft" {
 resource "cloudflare_record" "txt_azure" {
   zone_id = cloudflare_zone.stuard_me.id
   name    = "_dnsauth"
-  value   = azurerm_static_site_custom_domain.stuard_me.validation_token
+  value   = azurerm_static_site_custom_domain.root.validation_token
   type    = "TXT"
 }
 
