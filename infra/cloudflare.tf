@@ -59,7 +59,7 @@ resource "cloudflare_url_normalization_settings" "stuard_me" {
 
 // SSL/TLS / Overview
 
-resource "cloudflare_zone_settings_override" "test" {
+resource "cloudflare_zone_settings_override" "stuard_me" {
   zone_id = cloudflare_zone.stuard_me.id
 
   settings {
