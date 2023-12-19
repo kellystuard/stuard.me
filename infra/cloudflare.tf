@@ -35,7 +35,7 @@ resource "cloudflare_record" "cname_www" {
 
 resource "cloudflare_record" "txt_www_azure" {
   zone_id = cloudflare_zone.stuard_me.id
-  name    = "@"
+  name    = "www"
   value   = azurerm_static_site_custom_domain.root.validation_token
   type    = "TXT"
 }
