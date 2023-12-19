@@ -18,7 +18,7 @@ resource "cloudflare_record" "cname_root" {
   proxied = true
 }
 
-resource "cloudflare_record" "txt_azure" {
+resource "cloudflare_record" "txt_root_azure" {
   zone_id = cloudflare_zone.stuard_me.id
   name    = "@"
   value   = azurerm_static_site_custom_domain.root.validation_token
@@ -31,6 +31,13 @@ resource "cloudflare_record" "cname_www" {
   value   = azurerm_static_site.root.default_host_name
   type    = "CNAME"
   proxied = true
+}
+
+resource "cloudflare_record" "txt_www_azure" {
+  zone_id = cloudflare_zone.stuard_me.id
+  name    = "@"
+  value   = azurerm_static_site_custom_domain.root.validation_token
+  type    = "TXT"
 }
 
 resource "cloudflare_record" "cname_home" {

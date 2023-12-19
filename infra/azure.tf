@@ -14,3 +14,9 @@ resource "azurerm_static_site_custom_domain" "root" {
   domain_name     = cloudflare_zone.stuard_me.zone
   validation_type = "dns-txt-token"
 }
+
+resource "azurerm_static_site_custom_domain" "www" {
+  static_site_id  = azurerm_static_site.root.id
+  domain_name     = "www.${cloudflare_zone.stuard_me.zone}"
+  validation_type = "dns-txt-token"
+}
